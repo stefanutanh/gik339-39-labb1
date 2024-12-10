@@ -1,29 +1,27 @@
-const checkbox = document.getElementById('divStyle');
-const textFields = document.getElementsByClassName('textfield');
-const button = document.querySelector('#button');
-const contentDiv = document.getElementsByClassName('content-div')[0];
+
+const checkBox = document.querySelector(".checkbox");
+const inputFields = document.querySelectorAll(".textfield");
+const button = document.getElementById("button");
+const contentDiv = document.getElementById('content-div');
+console.log(checkBox, button, contentDiv, inputFields);
 
 function handleInput(e) {
-    console.log(e.target); 
+    console.log("handleInput", e.target);
     if (e.target.name === 'content') {
         contentDiv.innerHTML = e.target.value;
     }
 }
 
-checkbox.addEventListener('change', function() {
+inputFields.forEach(field => field.addEventListener('input', handleInput));
+
+checkBox.addEventListener('change', function() {
     const colorInput = document.getElementById('color');
     contentDiv.style.backgroundColor = colorInput.value;
-    console.log(checkbox)
-});
-
-Array.from(textFields).forEach(field => {
-    field.addEventListener('input', handleInput);
+    console.log("checkbox triggad");
 });
 
 button.addEventListener('click', function() {
     contentDiv.remove();
-    console.log("Removed element");
+    console.log("borttagen");
 });
-
-
 
